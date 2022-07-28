@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Wind report</title>
+	<link rel="stylesheet" type="text/css" href="wind.css" />
+	<script>
+		var se2 = new XMLHttpRequest();
+		se2.open("GET", "/sect_2", true);
+		se2.responseType = 'document';
+		se2.onload = () => {
+			if (se2.status === 200) {
+				var elements = se2.response.getElementsByTagName("a");
+				for (x of elements) {
+					if (x.href.match(/\.(jpe?g|png|gif)$/)) {
+						let img = document.createElement("img");
+						img.src = x.href;
+						document.getElementById("PRZ_img2").appendChild(img);
+					}
+				};
+			} else {
+				alert('Request failed. Returned status of ' + se2.status);
+			}
+		}
+		se2.send()
+
+
+		var se3 = new XMLHttpRequest();
+		se3.open("GET", "/sect_3", true);
+		se3.responseType = 'document';
+		se3.onload = () => {
+			if (se3.status === 200) {
+				var elements = se3.response.getElementsByTagName("a");
+				for (x of elements) {
+					if (x.href.match(/\.(jpe?g|png|gif)$/)) {
+						let img = document.createElement("img");
+						img.src = x.href;
+						document.getElementById("PRZ_img3").appendChild(img);
+					}
+				};
+			} else {
+				alert('Request failed. Returned status of ' + se3.status);
+			}
+		}
+		se3.send()
+	</script>
+
+</head>
+
+
+<body>
+
+
+	<div id="Logo">
+		<div id="Logo_txt">
+			<h3>FW Dębowa Łąka - przegląd techniczny elektrowni wiatrowej EW1/22</h3>
+		</div>
+		<div id="Logo_img"><img style="height:50px;" src="/logo.jpg"></div>
+	</div>
+
+
+	<div id="Protokol">
+		<div class="name_protokol">
+			<h2>
+				Protokół nr 01/22 z <br>
+				okresowego rocznego przeglądu technicznego<br>
+				obiektu budowlanego,<br>
+				Farma Dębowa Łąka<br>
+				Vestas V110-2.2MW<br>
+			</h2>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">Nazwa i adres obiektu</div>
+			<div class="width_70">Turbina wiatrowa EW1 Nr V235215<br>
+				Dębowa Łąka, powiat grudziądzki
+			</div>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">Właściciel obiektu:</div>
+			<div class="width_70">GB Dębowa Łąka 402 Sp. z o.o. <br>
+				ul. Konstruktorska 12A<br>
+				02-673 Warszawa
+			</div>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">Wykonawca przeglądu:</div>
+			<div class="width_70">GP EARTH Sp. z o.o. sp. k.<br>
+				ul. Jana Pawła II 27<br>
+				00-867 Warszawa<br>
+				<p><a href="http://www.gp-renewables.energy">www.gp-renewables.energy</a></p>
+			</div>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">W osobie:</div>
+			<div class="width_70">mgr inż. Piotr Musiał<br>
+				Uprawnienia budowlane do projektowania bez ograniczeń<br>
+				w specjalności konstrukcyjno–budowlanej<br>
+				Nr uprawnień: MAZ/0552/POOK/13<br>
+				kom. +48512930454</div>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">Podstawa prawna:</div>
+			<div class="width_70">
+				<p>Art. 62 ust.1 pkt 1a i pkt 1b <a href="https://www.gunb.gov.pl/aktualnosc/prawo">ustawy z dnia 7 lipca 1994
+						r. – Prawo budowlane (Dz. U. z 2016 r. poz. 290 z późn. zm.)</a></p>
+			</div>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">Data przeprowadzenia kontroli:</div>
+			<div class="width_70">08.06.2022 r.</div>
+		</div>
+
+		<div class="two_in_row">
+			<div class="width_30">Zakres kontroli:</div>
+			<div class="width_70">1. Weryfikacja zaleceń z poprzednich przeglądów technicznych. <br>
+				2. Kontrola stanu technicznego elementów budowli i instalacji narażonych na szkodliwe działania czynników
+				atmosferycznych i niszczących działań czynników występujących podczas użytkowania obiektu. <br>
+				3. Kontrola instalacji i urządzeń służących ochronie środowiska.
+			</div>
+		</div>
+
+		<div class="footer_protokol">
+			<h4>
+				GP EARTH Sp. z o.o. sp. k.. ul. Jana Pawła II 27 , 00-867 Warszawa <br>
+				<a href="http://www.gp-renewables.energy">www.gp-renewables.energy</a>
+			</h4>
+		</div>
+	</div>
+
+
+
+	<div id="PRZEGLAD">
+
+		<h2 class="PRZ_text">PRZEGLĄD TECHNICHNICZNY EW1</h2>
+		<!-- Section1 -->
+		<div style="display: flex; justify-content: center;"><img src="/img1.jpg" height="1000">
+		</div>
+
+		<div class="PRZ_text" id="WIEŻA">
+			<h3>WIEŻA I ELEMENTY POZA FUNDAMENTEM</h3>
+			<!-- Block1 -->
+			<h4>Pionowość wieży oceniona wizualnie</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block2 -->
+			<h4>Spójność elementów na połączeniach poszczególnych segmentów wieży wiatrowej</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<p>Śruby na wszystkich sekcjach prawidłowo oznaczone- brak uwag</p>
+			<br>
+			<!-- Block3 -->
+			<h4>Stan powłoki malarskiej stalowej wieży</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block4 -->
+			<h4>Ujawniająca się korozja stali</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block5 -->
+			<h4>Kontrola wizualna luzów na śrubach wysokiej wytrzymałości łączących wieżę z fundamentem. Kontrola nie objęła
+				sprawdzenia siły dokręcenia</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<p>Uwaga: Brak oznaczenia śrub na zewnątrz fundamentu</p>
+			<br>
+			<!-- Block6 -->
+			<h4>Filtry powietrza (wentylacyjne)</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+			<!-- Block7 -->
+			<h4>Konstrukcja schodów wejściowych i ich zamocowanie do wieży</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block8 -->
+			<h4>Stan konstrukcji podestów roboczych, balustrad</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block9 -->
+			<h4>Stan techniczny drabin i wind, ich zamocowania i terminy przeglądów</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block10 -->
+			<h4>Sprawność systemu przeciwpożarowego</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<p>Uwaga: Gaśnice sprawdzone i terminy kontrolne dotrzymane</p>
+			<br>
+			<!-- Block11 -->
+			<h4>Inne urządzenia przytwierdzone do wieży od zewnątrz elektrowni (schody)</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block12-->
+			<h4>Misa olejowa w gondoli:</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+	
+		</div>
+		<br>
+		<!-- Section2 -->
+		<div id="PRZ_img2" class="PRZ_img">
+		</div>
+
+
+
+		<div class="PRZ_text" id="FUNDAMENT">
+			<h3>FUNDAMENT, IZOLACJA, SYTUACJA WOKÓŁ TURBINY:</h3>
+			<br>
+			<!-- Block1 -->
+			<h4>Stan izolacji poziomej fundamentu w zakresie dostępności</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+			<!-- Block2 -->
+			<h4>Zaprawa wysokiej wytrzymałości przenosząca obciążenia ze stalowej wieży na fundament</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+			<!-- Block3 -->
+			<h4>Zarysowanie zewnętrzne betonu fundamentu</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+			<!-- Block4 -->
+			<h4>Zarysowanie wewnętrzne betonu fundamentu</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<p>Uwaga: Delicatne zarysowania betonu wewnętrz wieży</p>
+			<br>
+
+			<!-- Block5 -->
+			<h4>Odspojenia powierzchniowe betonu</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+			<!-- Block6 -->
+			<h4>Przerwanie zewnętrznej powłoki izolacyjnej</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+			<!-- Block7 -->
+			<h4>Stan odwodnienia (ew. zaleganie wody wewnątrz fundamentu, zawilgocenie, zagrzybienie)</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block8 -->
+			<h4>Ocena sytuacji gruntowo – wodnej wokół turbiny</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+			<!-- Block9 -->
+			<h4>Stan nasypu fundamentowego</h4>
+			<p>Stan</p>
+			<div class="PRZ_chkbox">
+				<div class=""><input type="checkbox" checked>dobry</div>
+				<div class=""><input type="checkbox">dopuszczający</div>
+				<div class=""><input type="checkbox">niedostateczny</div>
+				<div class=""><input type="checkbox">nie dotyczy</div>
+			</div>
+			<br>
+
+		</div>
+		<br>
+		<!-- Section3 -->
+		<div id="PRZ_img3" class="PRZ_img">
+		</div>
+
+
+		<div class="PRZ_text" id="PODSUMOWANIE">
+			<h4>Zalecania z poprzedniej kontroli techniczno – budowlanej:</h4>
+			<p>Brak zaleceń</p>
+			<br>
+			<h4>Podsumowanie i uwagi:</h4>
+			<p>Zaleca się wykonać sprawdzenie dokręcenia śrub wysokiej wytrzymałości i potwierdzić je protokołem.
+				Delikatne ślady odspojenia na styku zaprawy i betonu w piwnicy fundamentu należy obserwować.
+				Zaleca się systematyczne oczyszczanie misy olejowej w gondoli, w celu uniknięcia samozapłonu.</p>
+			<br>
+			<h4>Ocena obiektu:</h4>
+			<p>Obiekt nadaje się do użytkowania.</p>
+			<br>
+			<p class="text-right">Kontrolujący</p>
+
+		</div>
+	</div>
+
+
+
+	</main>
+
+	
+
+</body>
+
+</html>
